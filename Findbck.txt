@@ -1,0 +1,18 @@
+#!/bin/bash
+date >> logbprint.txt
+
+find /home/bckcol32/db_sidoc/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
+find /home/bckcol34/db_col34/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
+find /home/bckcol35/db_barbosa/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
+find /home/bckcol36/db_col36/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
+find /home/bckcol37/db_col37/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
+find /home/bckcol38/db_col38/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
+find /home/bckcol40/db_col40/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
+find /home/bckcol42/db_col42/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
+find /home/bckcol43/db_col43/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
+find /home/bckcol47/db_col47/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
+find /home/bckcol48/db_col48/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
+date >> logbprint.txt
+~
+~
+"findbck.sh" 15L, 2116C

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+MAILLOG=/usr/local/share/data/maillog.xz
+SECURE=/usr/local/share/data/secure.xz
+DIR=~/bloquear_ip
+
+mkdir -p "${DIR}"
+
+xzcat ${MAILLOG} |
+grep "user not found" |
+grep -E -o "([0-9]{1,3}\.){3}[0-9]{1,3}" |
+sort |
+uniq -c |
+sort -n -r |
+sed -e '/ [1-5] /d' |
+sed -e '1,$s/^.* //' > ${DIR}/SPAM.txt
+
+xzcat ${SECURE} |
+grep -E "POSSIBLE BREAK-IN ATTEMPT|Failed password" |
+grep -E -o "([0-9]{1,3}\.){3}[0-9]{1,3}" |
+sort |
+uniq -c |
+sort -n -r |
+sed -e '/ [1-5] /d' |
+sed -e '1,$s/^.* //' > ${DIR}/SSH.txt
+
+exit

@@ -1,0 +1,29 @@
+#!/bin/bash
+# Ventas
+
+
+ZIP_FILE=~/Parcial-2/data/ventas_valle.zip
+OUTPUT_DIR=~/Parcial-2/data
+OUTPUT_DIR_VENTAS=~/Parcial-2/Galindo_Kevin/ventas
+MUNICIPIOS_CSV=~/Parcial-2/data/municipios.csv
+
+unzip -o ${ZIP_FILE} -d ${OUTPUT_DIR} && base64 -d ${OUTPUT_DIR}/valle.csv.enc >> ${OUTPUT_DIR}/municipios.csv
+
+
+awk -F";" '
+    FNR==1 {header = $0; next}
+    !seen[$2]++ {print header > "datos_"$2".csv"}
+    {print  > "datos_"$2".csv"}
+' ${MUNICIPIOS_CSV}
+
+ls ./*.csv |
+while IFS="_" read a b;do
+  MUNICIPIO="${b%%.*}"
+  mkdir -p "${OUTPUT_DIR_VENTAS}/${MUNICIPIO}"
+  mv "${a}_${b}" "${OUTPUT_DIR_VENTAS}/${MUNICIPIO}/${a}_${b}"
+  sha256sum "${OUTPUT_DIR_VENTAS}/${MUNICIPIO}/${a}_${b}" | awk '{print $1}'> "${OUTPUT_DIR_VENTAS}/${MUNICIPIO}/${a}_${b}.sh256"
+done
+
+echo "DONE Transmitir ventas"
+
+exit

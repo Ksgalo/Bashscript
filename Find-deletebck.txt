@@ -1,0 +1,26 @@
+#!/bin/bash
+
+
+#obtener número de mes
+MES_NUM=$(date +%m)
+DIA_NUM=$(date +%d)
+
+date >> /home/logbprint.txt
+
+        echo "-------------------- Eliminado archivos-------------------" >> /home/logbprint.txt
+        find /var/data/sql/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*113
+0*' ! -iname '*31*'  -delete -print >> /home/logbprint.txt
+        echo "---------------Mv archvios sql mes - $MES_NUM dia - $DIA_NUM---------------" >> /home/logbprint.txt
+        find /home/respaldosql/* -mtime 0  -type f -exec mv -t /var/data/sql/$MES_NUM {} + -print >> /home/logbprint.txt
+        #Eliminar
+
+date >> /home/logbprint.txt
+
+
+
+
+~
+~
+~
+~
+"findbck.sh" 21L, 683C

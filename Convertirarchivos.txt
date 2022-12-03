@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+ORIGEN=~/proceso/origen/
+DESTINO=~/proceso/destino/
+
+function file_zip(){
+
+find $DESTINO -type f -name $1 |
+        while read csv; do
+                zip "$csv.zip" "$csv"
+                rm -rf "$csv"
+done
+}
+
+
+find $ORIGEN -type f ! -name "*zip" |
+        while read files; do
+                7za e $files -o"$DESTINO" &> /dev/null
+
+        done
+
+file_zip "*csv"
+rsync -a --include '*zip' --exclude '*' $ORIGEN $DESTINO
+
+#rm -rf "$ORIGEN*.csv*"
+

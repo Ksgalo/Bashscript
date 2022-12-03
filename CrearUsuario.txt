@@ -1,0 +1,17 @@
+#!/bin/bash
+# Paises
+
+
+USUARIOS=~/Parcial-2/data/users.txt.bz2
+OUTPUT_USER=~/Parcial-2/Galindo_Kevin/paises
+
+bzcat ${USUARIOS} | awk '{print $1}' | 
+while IFS=";" read a b c; do
+  mkdir -p "${OUTPUT_USER}/${c}"
+  echo "'$b, $a' <${b%"${b#?}"}.${a}@empresa.com>" >> "${OUTPUT_USER}/${c}/users.txt"
+  bzip2 -c "${OUTPUT_USER}/${c}/users.txt" > "${OUTPUT_USER}/${c}/users.txt.bz2"
+done
+
+echo "Done Usuarios x Paises"
+
+exit
