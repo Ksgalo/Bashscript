@@ -1,6 +1,8 @@
 #!/bin/bash
 date >> logbprint.txt
 
+##Bash que realiza una busqueda en los diferentes dir que se encuentran el servidor realizando un delete con el filtro fecha y nombre 
+
 find /home/bckcol32/db_sidoc/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
 find /home/bckcol34/db_col34/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
 find /home/bckcol35/db_barbosa/* -mtime +29 -and -mtime -31 -type f ! -iname '*0430*' ! -iname '*0630*' ! -iname '*0930*' ! -iname '*1130*' ! -iname '*31*'  -delete -print >> logbprint.txt
