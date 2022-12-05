@@ -24,4 +24,14 @@ sort -n -r |
 sed -e '/ [1-5] /d' |
 sed -e '1,$s/^.* //' > ${DIR}/SSH.txt
 
+#!/usr/bin/bash
+echo date > /home/keving/logprin.txt
+MAILLOG=/tmp/maillog.xz
+
+
+
+xzcat ${MAILLOG} |
+grep "user not found" |
+awk -F: '{print $6 }'|
+head
 exit
